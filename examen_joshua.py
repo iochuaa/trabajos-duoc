@@ -16,7 +16,7 @@ stock = {'8475HD': [387990, 10], '2175HD': [327990, 4], 'JjfFHD': [424990, 1],
          }
 
 
-def mostrar_stock(marca):
+def stock_marca(marca):
     lista = []
     for clave, valor in productos.items():
         if valor[0] == marca:
@@ -43,10 +43,13 @@ def busqueda_precio(p_min, p_max):
         print('Los notebooks entre los precios consultas son: ', lista)
 
 
-def listado_de_productos():
-    for clave, valor in productos.items():
-    print('-----listado de notebooks-----')
-    print(f'{valor[0]} {valor[1]} {valor[2]} {valor[4]}')
+def ordenar_productos():
+    if stock == {}:
+        print('No hay notebooks disponibles para mostrar.')
+    else:
+        print('------ Listado de Notebooks Ordenados ------')
+        for clave, valor in productos.items():
+            print(f'{valor[0]} - {valor[2]} - {valor[3]} - {valor[4]}')
 
 
 def menu():
