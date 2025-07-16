@@ -28,9 +28,19 @@ def mostrar_stock(marca):
     print('El stock es:', total)
 
 
-def busqueda_por_precio():
-    precio_minimo = int(input("Ingrese precio minimo $ "))
-    precio_maximo = int(input("Ingrese precio maximo $ "))
+def busqueda_precio(p_min, p_max):
+    nombres = []
+    for clave, valor in stock.items():
+        if p_min <= valor[0] <= p_max:
+            nombres.append(clave)
+    lista = []
+    for cod, datos in productos.items():
+        if cod in nombres:
+            lista.append(f'{datos[0]}--{cod}')
+    if lista == []:
+        print('No hay notebooks en ese rango de precios.')
+    else:
+        print('Los notebooks entre los precios consultas son: ', lista)
 
 
 def listado_de_productos():
