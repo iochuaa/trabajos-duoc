@@ -49,24 +49,37 @@ def listado_de_productos():
     print(f'{valor[0]} {valor[1]} {valor[2]} {valor[4]}')
 
 
-while True:
-    print('''
-\nMENÚ PRINCIPAL PYbooks
-====================================
-1. stock de la marca
-2. busqueda por precio del producto
-3. listado de los productos
-4. Salir
- ''')
-    opcion = input("Seleccione una opción: ")
-    if opcion == '1':
-    mostrar_stock()
-    elif opcion == '2':
-    busqueda_por_precio()
-    elif opcion == '3':
-    listado_de_productos()
-    elif opcion == '4':
-    print("programa finalizado.")
-    break
-    else:
-    print("Opción no válida. Intente nuevamente.")
+def menu():
+    while True:
+        print("\n'*** MENU PRINCIPAL ***'")
+        print("1. Stock de marca.")
+        print("2. Busqueda por precio.")
+        print("3. Listado de productos.")
+        print("4. Salir.")
+
+        opcion = input("Ingrese opcion: ")
+
+        if opcion == "1":
+            marca = input('Ingrese marca a consultar: ').strip().lower()
+            stock_marca(marca)
+        elif opcion == "2":
+            ban = False
+            while ban != True:
+                try:
+                    p_min = int(input('Ingrese precio minimo: '))
+                    p_max = int(input('Ingrese precio maximo: '))
+                    ban = True
+                except:
+                    print('Debe ingresar valores enteros!!')
+            busqueda_precio(p_min, p_max)
+        elif opcion == "3":
+            ordenar_productos()
+        elif opcion == "4":
+            print("Programa finalizado.")
+            break
+        else:
+            print("Debe seleccionar una opcion valida!!")
+
+
+#
+menu()
